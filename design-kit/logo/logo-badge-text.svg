@@ -1,0 +1,61 @@
+<!--
+  AITC badge v1 — circular pfp badge, brand-aligned redesign.
+
+  Decisions (per Joel):
+  - disc: forest-deep #0c2719 (spec black, not void black)
+  - ring + arc text: all cream, hairline ring
+  - wording/case identical to current pfp: AI TECHNOLOGY / INNOVATION CLUB, uppercase
+  - type: brand stack (SF Pro Display -> Inter Tight fallback), wide-tracked
+  - mark: logo-refined.svg paths (ids preserved), cream A/slash/T, forest C
+  - gold kept as the single accent: T/A stem (path i) only
+  - simplified: no stars, no gold arc sliver
+  - gold value ~#d9a13b is an eyeball match to the pfp, not a token
+
+  Fixed-color master (like the pfp): do NOT use as a CSS mask.
+  For a maskable mark use logo-mark-bare.svg (single-colour version).
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1024" height="1024" viewBox="0 0 1024 1024"
+     role="img" aria-labelledby="aitc-badge-title">
+  <title id="aitc-badge-title">AITC badge — AI Technology Innovation Club</title>
+  <defs>
+    <!-- top arc: left point to right point over the crown -->
+    <path id="arc-top" d="M 126,409 A 400,400 0 0 1 898,409" fill="none"/>
+    <!-- bottom arc: left point to right point under the base (glyphs stay upright) -->
+    <path id="arc-bottom" d="M 126,615 A 400,400 0 0 0 898,615" fill="none"/>
+  </defs>
+
+  <rect width="1024" height="1024" fill="#0c2719"/>
+  <circle cx="512" cy="512" r="478" fill="none" stroke="#fff3cb" stroke-width="3"/>
+
+  <text font-family="'SF Pro Display', 'Inter Tight', 'Helvetica Neue', sans-serif"
+        font-size="76" font-weight="600" letter-spacing="14" fill="#fff3cb">
+    <textPath href="#arc-top" startOffset="50%" text-anchor="middle">AI TECHNOLOGY</textPath>
+  </text>
+  <text font-family="'SF Pro Display', 'Inter Tight', 'Helvetica Neue', sans-serif"
+        font-size="76" font-weight="600" letter-spacing="14" fill="#fff3cb">
+    <textPath href="#arc-bottom" startOffset="50%" text-anchor="middle">INNOVATION CLUB</textPath>
+  </text>
+
+  <!-- refined monogram, re-centered: natural centre (504,504) -> badge centre (512,520), 0.58 scale -->
+  <g transform="translate(512 520) scale(0.58) translate(-504 -504)">
+    <g transform="translate(0 1024) scale(.1 -.1)">
+      <path id="t" fill="#fff3cb"
+            d="M3860 7635v-245h1230v-640h420v640h1260v490H3860v-245z"/>
+      <path id="a" fill="#fff3cb"
+            d="M4440 6693c-167-316-218-412-300-568-64-121-259-496-535-1030-237-458-1295-2557-1295-2568 0-4 157-7 350-7h350l101 208c299 608 1490 2995 1493 2991 2-2 85-159 184-349 99-190 233-448 299-575 66-126 216-414 333-640 403-779 827-1591 847-1623 6-10 84-12 364-10l356 3-290 530c-159 292-366 679-459 860-94 182-253 485-353 675-101 190-269 509-375 710-106 201-214 406-240 455-26 50-137 259-245 465-342 650-412 780-420 780-2 0-76-138-165-307z"/>
+      <path id="i" fill="#d9a13b"
+            d="M5090 6456v-154l73-129c41-70 129-227 197-348 68-121 129-229 137-240 11-16 13 62 13 503v522h-420v-154z"/>
+      <path id="c-upper" fill="#216434"
+            d="M6933 6590c-182-21-416-87-577-163-226-107-462-288-628-479l-50-58 137-250c75-137 140-250 143-249 4 0 32 39 62 87 68 106 253 296 362 370 146 100 299 166 470 204 132 29 357 31 490 5 237-47 469-161 636-312 73-66 61-69 184 38 40 35 120 101 177 147l104 84-90 86c-263 253-564 405-927 470-125 23-382 33-493 20z"/>
+      <path id="slash" fill="#fff3cb"
+            d="M3042 6387c-5-7-51-93-102-192-51-99-213-407-360-685-579-1094-950-1807-950-1823 0-4 165-7 368-7h367l482 963c265 529 572 1137 683 1350 110 213 198 392 195 397-9 14-672 11-683-3z"/>
+      <path id="c-center" fill="#216434"
+            d="M6975 5909c-222-28-454-137-624-295-428-396-484-1061-127-1519 214-273 499-420 841-432 315-11 562 74 793 275 96 83 96 80-5 153-48 35-92 67-99 71-7 5-39-13-81-46-170-133-350-197-559-197-254-1-456 86-625 268-158 171-235 371-233 608 1 141 18 221 75 343 114 246 325 422 590 493 112 30 309 33 419 6 94-24 259-102 326-156 29-23 58-41 64-41 7 0 49 27 93 60 43 33 87 64 96 69 14 9 13 13-9 37-51 56-189 149-295 200-200 96-415 131-640 103z"/>
+      <path id="a-inset" fill="#fff3cb"
+            d="M4400 4053c-111-214-234-448-272-520-38-73-64-133-58-133 6 0 131 70 276 156l265 156 62-40c34-22 123-75 197-117 74-43 168-98 208-123 40-24 75-42 78-39 3 3-19 52-49 109-30 57-114 216-187 353-212 401-311 585-315 585-2 0-94-174-205-387z"/>
+      <path id="c-lower" fill="#216434"
+            d="M7970 3865c-30-30-88-79-130-109-379-273-839-312-1256-105-52 25-94 44-94 41 0-14 318-632 334-648 31-32 387-44 566-19 346 49 625 173 882 392 77 66 181 180 176 193-2 4-60 50-131 103-70 53-158 121-196 152-37 30-75 55-82 55-8 0-39-25-69-55z"/>
+    </g>
+  </g>
+</svg>

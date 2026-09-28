@@ -1,0 +1,4 @@
+.DS_Store
+temp_html_posts/
+__pycache__/
+*.pyc

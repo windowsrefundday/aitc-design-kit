@@ -1,0 +1,47 @@
+:root {
+  --color-primary: #216434;
+  --color-primary-mid: #174b2a;
+  --color-primary-deep: #0c2719;
+  --color-primary-light: #8dad82;
+  --color-secondary: #2b7244;
+  --color-neutral: #fff3cb;
+  --color-neutral-soft: #f4e8b8;
+  --color-neutral-hi: #fff9e6;
+  --color-surface: #0c2719;
+  --color-on-surface: #fff3cb;
+  --color-on-surface-variant: #fff3cbc7;
+  --color-on-surface-caption: #fff3cb94;
+  --color-outline: #fff3cb29;
+  --color-surface-light: #fff3cb;
+  --color-on-surface-light: #2b7244;
+  --color-on-surface-light-variant: #2164349e;
+  --color-outline-light: #0c27191f;
+  --color-gradient-sage-1: #6f9d6f;
+  --color-gradient-sage-2: #558f61;
+  --color-gradient-forest-1: #35744a;
+  --color-gradient-forest-2: #1d5730;
+  --color-gradient-forest-3: #0f3a20;
+  --color-bridge-sage: #dbe1b3;
+  --color-bridge-sage-deep: #d5dfb0;
+  --color-shadow-glow: #1e6037cf;
+  --color-shadow-ambient: #041c0f33;
+  --color-shadow-frame: #081c10bf;
+  --spacing-panel-inset: 22px;
+  --spacing-panel-padding-top: 46px;
+  --spacing-panel-padding-x: 42px;
+  --spacing-panel-padding-bottom: 42px;
+  --spacing-logo-gap: 28px;
+  --spacing-header-gap: 34px;
+  --spacing-gutter: 36px;
+  --spacing-xs: 12px;
+  --spacing-sm: 22px;
+  --spacing-md: 34px;
+  --spacing-lg: 46px;
+  --spacing-xl: 72px;
+  --rounded-sm: 12px;
+  --rounded-md: 24px;
+  --rounded-lg: 40px;
+  --rounded-xl: 56px;
+  --rounded-full: 9999px;
+}
+

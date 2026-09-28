@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>aitc — starter post</title>
+<!--
+  AITC starter canvas. 1080x1350 (S = 1080).
+  Render:  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+             --headless=new --disable-gpu --hide-scrollbars \
+             --allow-file-access-from-files \
+             --force-device-scale-factor=1 --window-size=1080,1350 \
+             --virtual-time-budget=4000 --screenshot=out.png \
+             file://$PWD/aitc-starter-post.html
+  The --allow-file-access-from-files flag is required: without it Chrome refuses
+  the CSS mask and the logo silently renders blank.
+  For 2x output use --force-device-scale-factor=2 and leave the CSS alone.
+  Swap the ground for one of the other two in DESIGN.md > Colors.
+-->
+<style>
+@font-face {
+  font-family: 'Inter Tight';
+  src: url('../fonts/InterTight[wght].ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+* { margin:0; padding:0; box-sizing:border-box;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+html, body { width:1080px; height:1350px; }
+:root { --logo: url('../logo/logo-mask-1024.png'); }
+
+body {
+  position:relative; overflow:hidden;
+  font-family:'Inter Tight', "SF Pro Display", -apple-system, sans-serif;
+  font-synthesis:none;
+  /* ground C — mid-green, the repeating-series ground */
+  background: linear-gradient(140deg,#6f9d6f 0%,#558f61 26%,#35744a 58%,#1d5730 84%,#0f3a20 100%);
+}
+
+.panel { position:absolute; inset:22px; border-radius:56px;
+  background:rgba(255,249,230,.135); border:1px solid rgba(255,249,230,.14);
+  padding:46px 42px 42px; display:flex; flex-direction:column; }
+
+.header { display:flex; align-items:flex-start; gap:28px; flex:0 0 auto; }
+.logo { width:158px; height:158px; flex:0 0 auto; margin-top:4px;
+  background:linear-gradient(180deg,#fff9e6 0%,#f4e8b8 100%);
+  -webkit-mask:var(--logo) center/contain no-repeat;
+          mask:var(--logo) center/contain no-repeat;
+  filter:drop-shadow(11.2px 20.1px 39px rgba(30,96,55,.81)); }
+
+/* stretch, not flex-end — the autofit loop measures against this */
+.col { flex:1 1 auto; min-width:0; display:flex; flex-direction:column;
+       align-items:stretch; text-align:right; }
+
+.cream { background:linear-gradient(180deg,#fff9e6 0%,#f4e8b8 100%);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(11.2px 20.1px 39px rgba(30,96,55,.81)); }
+
+.title { font-size:100px; font-weight:700; line-height:1.0;
+         letter-spacing:-.035em; white-space:nowrap; }
+.sub   { margin-top:12px; font-size:56px; font-weight:700; line-height:1.06;
+         letter-spacing:-.035em; white-space:nowrap; text-transform:lowercase; }
+
+.body-row { flex:1 1 auto; min-height:0; display:flex; align-items:stretch; margin-top:34px; }
+.frame { flex:0 0 640px; height:100%; min-height:0; border-radius:40px; overflow:hidden;
+  border:2px solid rgba(255,243,203,.35); box-shadow:0 32px 80px rgba(8,28,16,.75);
+  background:#0c2719; display:flex; align-items:center; justify-content:center;
+  color:rgba(255,243,203,.3); font-size:22px; letter-spacing:.06em; }
+.frame img { width:100%; height:100%; object-fit:cover; display:block;
+             filter:contrast(1.04) saturate(1.03); }
+.side { flex:1 1 auto; min-width:0; padding-left:36px; padding-top:78px; text-align:right; }
+.side p { font-size:60px; font-weight:700; line-height:1.08; letter-spacing:-.035em;
+          overflow-wrap:break-word; }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <header class="header">
+      <div class="logo" role="img" aria-label="AITC"></div>
+      <div class="col">
+        <h1 class="title cream">headline</h1>
+        <p class="sub cream">supporting role or subhead</p>
+      </div>
+    </header>
+    <div class="body-row">
+      <!-- drop an <img style="object-position:50% 30%"> in here; hand-set the crop -->
+      <div class="frame">image 67%</div>
+      <div class="side"><p class="cream">short lowercase copy, right aligned.</p></div>
+    </div>
+  </div>
+
+<script>
+// shrink-to-fit on width only. never also test height — line-box rounding
+// makes the height test fail forever and collapses the size.
+function fitWidth(el, start, min) {
+  if (!el) return start;
+  for (var s = start; s >= min; s -= 1) {
+    el.style.fontSize = s + 'px';
+    if (el.scrollWidth <= el.clientWidth + 1) return s;
+  }
+  return min;
+}
+var n = fitWidth(document.querySelector('.title'), 100, 78);
+fitWidth(document.querySelector('.sub'), Math.round(n * 0.56), 38);   // ratio lock: 0.56
+
+var side = document.querySelector('.side'), p = side && side.querySelector('p');
+if (p) {
+  var avail = side.clientHeight - parseFloat(getComputedStyle(side).paddingTop);
+  for (var f = 60; f >= 28; f -= 1) {
+    p.style.fontSize = f + 'px';
+    if (p.scrollHeight <= avail && p.scrollWidth <= p.clientWidth + 1) break;
+  }
+}
+</script>
+</body>
+</html>
